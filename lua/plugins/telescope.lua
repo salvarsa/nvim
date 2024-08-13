@@ -1,4 +1,3 @@
--- ~/.config/nvim/lua/plugins/telescope.lua 
 return function()
   require('telescope').setup{
     defaults = {
@@ -11,7 +10,7 @@ return function()
         '--column',
         '--smart-case'
       },
-      prompt_prefix = "> ",
+      prompt_prefix = "> ",  
       selection_caret = "> ",
       path_display = {"smart"},
       file_ignore_patterns = {},
@@ -42,5 +41,4 @@ return function()
     extensions = {},
   }
 end
-
 

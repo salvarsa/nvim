@@ -22,14 +22,14 @@ else
   vim.notify('Telescope no está cargado', vim.log.levels.ERROR)
 end
 
-
--- Intentar cargar Telescope de manera segura
+-- Ensure Telescope is loaded before using it
 local telescope_status_ok, builtin = pcall(require, 'telescope.builtin')
 if telescope_status_ok then
   vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 else
-  vim.notify('Telescope no está cargado. Verifica que esté instalado correctamente.', vim.log.levels.ERROR)
+  vim.notify('Telescope not loaded. Please check installation.', vim.log.levels.ERROR)
 end
+
 
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<cr>', {})
 

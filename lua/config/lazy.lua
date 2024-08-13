@@ -36,14 +36,58 @@ lazy.opts = {}
 
 --carga de plungins de lazy
 lazy.setup({
-  { 'folke/tokyonight.nvim', config = require('plugins.colorscheme') },
+   { 
+    'rebelot/kanagawa.nvim', 
+    config = require('plugins.colorscheme') -- Carga la configuración del tema desde este archivo
+  },
   { 'kyazdani42/nvim-web-devicons' },
   { 'nvim-lualine/lualine.nvim', config = require('plugins.lualine') },
 	{ 
-    'nvim-telescope/telescope.nvim', 
-    tag = '0.1.8', 
-    dependencies = { 'nvim-lua/plenary.nvim' }, 
-    config = require('plugins.telescope')
+    'nvim-telescope/telescope.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('telescope').setup{
+        defaults = {
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case'
+          },
+          prompt_prefix = "> ",
+          selection_caret = "> ",
+          path_display = {"smart"},
+          file_ignore_patterns = {},
+          winblend = 0,
+          layout_strategy = "horizontal",
+          layout_config = {
+            horizontal = {
+              mirror = false,
+            },
+            vertical = {
+              mirror = false,
+            },
+          },
+          mappings = {
+            i = {
+              ["<C-n>"] = "cycle_history_next",
+              ["<C-p>"] = "cycle_history_prev",
+              ["<C-j>"] = "move_selection_next",
+              ["<C-k>"] = "move_selection_previous",
+            },
+          },
+        },
+        pickers = {
+          find_files = {
+            theme = "dropdown",
+          }
+        },
+        extensions = {},
+      }
+    end,
   },
   { 'nvim-treesitter/nvim-treesitter', build = ":TSUpdate", config = require('plugins.treesitter') },
   { 

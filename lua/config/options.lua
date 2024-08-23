@@ -1,6 +1,5 @@
--- ========================================================================== --
--- ==                           EDITOR SETTINGS                            == --
--- ========================================================================== --
+vim.g.mapleader = " " 
+
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.ignorecase = true
@@ -13,4 +12,6 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = false
 vim.opt.termguicolors = true
 vim.opt.showmode = false
+
+vim.cmd.colorscheme("koehler")
 

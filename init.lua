@@ -1,11 +1,11 @@
 --cargar opciones generales
-require("lua.config.options")
+require("config.options")
 
 --cargar mapeos de teclas
 
 
 --Cargar comandos personalizdos
-require("lua.config.commands")
+require("config.commands")
 
 --Cargar autocomandos
 

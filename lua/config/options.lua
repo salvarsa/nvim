@@ -13,5 +13,3 @@ vim.opt.expandtab = false
 vim.opt.termguicolors = true
 vim.opt.showmode = false
 
-vim.cmd.colorscheme("koehler")
-

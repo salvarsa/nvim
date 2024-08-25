@@ -1,9 +1,12 @@
 return {
-	'luisiacc/thematrix'
-	lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  {
+		'wuelnerdotexe/vim-enfocado',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- load the colorscheme here
-      vim.cmd([[colorscheme thematrix]])
+      vim.cmd([[colorscheme enfocado]])
     end,
+  }
 }
+

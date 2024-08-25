@@ -1,5 +1,5 @@
 {
   "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
-  "vim-enfocado": { "branch": "main", "commit": "2a8fffdff1a20473f0fbacef10f2fb356e039b31" },
+  "matrix-nvim": { "branch": "main", "commit": "5fafe6b440d08c1070e3c4c4cb9d648436d5d867" },
   "vim-fugitive": { "branch": "master", "commit": "0444df68cd1cdabc7453d6bd84099458327e5513" }
 }

@@ -13,3 +13,9 @@ vim.opt.expandtab = false
 vim.opt.termguicolors = true
 vim.opt.showmode = false
 
+--theme theMatrix
+vim.g.thematrix_function_style = "NONE"
+vim.g.thematrix_keyword_style = "italic"
+vim.g.thematrix_highlights = {Normal = {fg = "#123123", bg = "NONE", style="underline"}}
+--vim.g.thematrix_telescope_theme = 1
+vim.g.thematrix_transparent_mode = 1

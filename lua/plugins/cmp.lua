@@ -1,19 +1,29 @@
 return {
+  {
+    'nvim-lua/plenary.nvim'
+  },
+
   -- Autocompletado
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp',  -- Fuente para LSP
-      'hrsh7th/cmp-buffer',    -- Fuente para buffer
-      'hrsh7th/cmp-path',      -- Fuente para rutas
-      'hrsh7th/cmp-cmdline',   -- Fuente para línea de comandos
-      'L3MON4D3/LuaSnip',      -- Motor de snippets
+      'nvim-lua/plenary.nvim',  -- Asegura que plenary.nvim esté cargado
+      'hrsh7th/cmp-nvim-lsp',   -- Fuente para LSP
+      'hrsh7th/cmp-buffer',     -- Fuente para buffer
+      'hrsh7th/cmp-path',       -- Fuente para rutas
+      'hrsh7th/cmp-cmdline',    -- Fuente para línea de comandos
+      'L3MON4D3/LuaSnip',       -- Motor de snippets
       'saadparwaiz1/cmp_luasnip', -- Fuente para LuaSnip
-      'onsails/lspkind-nvim',  -- Añade iconos a las sugerencias
+      'onsails/lspkind-nvim',   -- Añade iconos a las sugerencias
+      'windwp/nvim-autopairs',
+      'petertriho/cmp-git',     -- Fuente para Git
     },
     config = function()
       local cmp = require('cmp')
-      local lspkind = require('lspkind') -- Añade iconos a las sugerencias
+      local lspkind = require('lspkind')
+
+      -- Configura cmp-git
+      require('cmp_git').setup()
 
       cmp.setup({
         snippet = {
@@ -26,10 +36,11 @@ return {
             with_text = true,
             maxwidth = 50,
             menu = {
-              nvim_lsp = "[LSP]",
-              luasnip = "[Snip]",
               buffer = "[Buf]",
+              nvim_lsp = "[LSP]",
               path = "[Path]",
+              luasnip = "[Snip]",
+              git = "[Git]", -- Añade el menú de Git
             },
           }),
         },
@@ -43,13 +54,14 @@ return {
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
+          { name = 'git' }, -- Añade la fuente de Git
         }, {
           { name = 'buffer' },
           { name = 'path' },
         }),
       })
 
-      -- Configuración para la línea de comandos
+      -- Configuración para la línea de comandos de búsqueda `/`
       cmp.setup.cmdline('/', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
@@ -57,6 +69,7 @@ return {
         }
       })
 
+      -- Configuración para la línea de comandos `:`
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({

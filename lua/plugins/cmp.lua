@@ -21,6 +21,7 @@ return {
     config = function()
       local cmp = require('cmp')
       local lspkind = require('lspkind')
+			local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
       -- Configura cmp-git
       require('cmp_git').setup()
@@ -45,7 +46,7 @@ return {
           }),
         },
         mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
@@ -60,6 +61,9 @@ return {
           { name = 'path' },
         }),
       })
+
+			-- Integración de nvim-autopairs con nvim-cmp
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = "" }})
 
       -- Configuración para la línea de comandos de búsqueda `/`
       cmp.setup.cmdline('/', {
@@ -84,6 +88,11 @@ return {
       require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
         capabilities = capabilities
       }
+
+			 -- Configuración de nvim-autopairs
+      require('nvim-autopairs').setup({
+        check_ts = true,  -- Si usas treesitter, habilita esta opción
+      })
     end
   },
   -- Otros plugins...

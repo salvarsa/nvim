@@ -10,29 +10,26 @@ return {
 
     -- Nueva imagen ASCII más pequeña
     local header_art = [[
-      ⠀⠀⠀⠀⢀⣤⣤⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣤⡀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⣾⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⣷⠀⠀⠀⠀
-      ⠀⣴⣶⣾⣿⣿⣿⣿⡋⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣿⣿⣿⣷⣶⣄⠀
-      ⠀⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀⠀⠀⣠⣾⠏⢹⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠻⢷⣄⠀⠀⠀⠀⢀⣰⣿⣿⣿⣿⣿⣿⣿⣿⠀
-      ⠀⠙⠻⠿⠛⠉⠻⣿⣿⣿⣿⣦⡀⢀⣼⣿⢁⣼⠏⣠⡟⢠⣿⣿⣿⣿⣿⣿⣿⣿⡀⢻⣷⡀⢿⣷⡀⢀⣴⣿⣿⣿⣿⠟⠉⠻⠿⠿⠋⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⡿⠀⠈⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⠈⠉⠁⠀⢻⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠛⠃⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⠿⠋⠉⠉⠻⣿⣿⣿⣿⣿⣿⠟⠋⠉⠙⠻⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⡏⠀⠀⠀⠀⠀⠈⢻⣿⣿⡿⠁⠀⠀⠀⠀⠀⠸⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⡇⠀⠀⠀⠀⠀⠀⣸⣿⣿⣧⠀⠀⠀⠀⠀⠀⢀⣿⣿⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⣿⣄⣀⠀⠀⣀⣴⣿⣿⣿⣿⣧⣀⡀⠀⢀⣀⣼⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⣿⣿⣿⣿⣿⣯⡀⠀⣸⣿⣿⣿⣿⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⢀⣤⣍⣙⠛⠛⠛⠿⠿⠛⠛⠛⣋⣩⣤⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⡇⡘⠿⣿⡏⢸⣿⣷⣶⢰⣶⣿⡇⣿⣿⡿⠃⢸⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⠠⣿⣷⣶⠁⣌⣉⣛⠛⠘⣛⣋⡁⢨⣶⣶⣿⡸⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⢀⣴⣶⣦⣄⣤⣾⣿⣿⣿⡿⢰⣮⡉⠛⢠⣿⣿⣿⣿⢸⣿⣿⣿⠈⠟⢋⣩⡄⣿⣿⣿⣿⣷⣄⣠⣴⣶⣦⡀⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠈⣿⣿⣿⣷⣶⣤⣤⣤⣤⣤⣤⣴⣶⣿⣿⣿⠁⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠘⠿⠿⣿⣿⣿⣿⣯⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⣿⣿⣿⣿⡿⠿⠟⠁⠀⠀⠀⠀⠀
-      ⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠃⠀⠀⠀⠀⠸⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀
-            ⠀⠀⠀⠙⠛⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠛⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠛⠋⠀⠀⠀
-      ]]
+		
+             (\. -- ./)
+         O-0)))--|     \
+           |____________|
+            -|--|--|--|-
+            _T~_T~_T~_T_
+           |____________|
+           |_o_|____|_o_|
+        .-~/  :  |   %  \
+ .-..-~   /  :   |  %:   \
+ `-'     /   :   | %  :   \
+        /   :    |#   :    \
+       /    :    |     :    \
+      /    :     |     :     \
+  . -/     :     |      :     \- .
+ |\  ~-.  :      |      :   .-~  /|
+ \ ~-.   ~ - .  _|_  . - ~   .-~ /
+   ~-.  ~ -  . _ _ _ .  - ~  .-~
+        ~ -  . _ _ _ .  - ~
+		]]
 
     -- Texto ASCII adicional
     local footer_art = [[
@@ -46,7 +43,7 @@ return {
                                            
 ]]
 
-    -- Función para dividir un string en líneas
+  -- Función para dividir un string en líneas
     local function split_string(inputstr, sep)
       sep = sep or "\n"
       local t = {}
@@ -69,7 +66,8 @@ return {
       local dashboard_width = 80 -- Ajusta este valor a tu gusto
       local lines = {}
       for _, line in ipairs(text) do
-        local padding = math.floor((dashboard_width - #line) / 2)
+        local line_width = vim.fn.strdisplaywidth(line) -- Usar strdisplaywidth para calcular correctamente el ancho
+        local padding = math.floor((dashboard_width - line_width) / 2)
         table.insert(lines, string.rep(" ", padding) .. line)
       end
       return lines
@@ -82,14 +80,14 @@ return {
 
     -- Configuración de los botones
     dashboard.section.buttons.val = {
-      dashboard.button("p", "  Find project", ":Telescope projects <CR>"),
+      dashboard.button("p", "  Find project", ":Telescope find_files cwd=~/Projects<CR>"),
       dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
       dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
-      dashboard.button("m", "  BookMarks", ":Telescope marks <CR>"),
+     -- dashboard.button("m", "  BookMarks", ":Telescope marks <CR>"),
       dashboard.button("e", "  Extensions", ":e ~/.config/nvim/lua/VisualStudioNeovim/Core/plugins.lua<CR>"),
       dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
-      dashboard.button("c", "  Configuration", ":e ~/.config/nvim/lua/VisualStudioNeovim/Core/options.lua<CR>"),
+      dashboard.button("c", "  Configuration", ":e $MYVIMRC<CR>"),
       dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
     }
 
@@ -100,4 +98,4 @@ return {
     vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
   end,
 }
-
+ 

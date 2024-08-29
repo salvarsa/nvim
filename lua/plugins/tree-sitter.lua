@@ -10,6 +10,10 @@ return {
 		ensure_instaled = {
 			"lua",
 			"luadoc",
+			"html",
+			"css",
+			"javascript",
+			"typescript",
 		},
 		highlight = {
 			enable = true,

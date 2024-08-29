@@ -1,20 +1,30 @@
 return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		"williamboman/mason.nvim",
-		"folke/neodev.nvim",
-	},
-	--con esto cargo el servidor de lenguajes
-	config = function()
-	  --vim.keymaps.set('n', '<space>', vim.diagnostic.open_float)
-		--vim.keymaps.set('n', '[d', vim.diagnostic.goto_prev)
-		--vim.keymaps.set('n', ']d', vim.diagnostic.goto_next)
-		--vim.keymaps.set('n', '<space>q', vim.diagnostic.setloclist)
+  "neovim/nvim-lspconfig",
+  dependencies = {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "folke/neodev.nvim",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
+  },
+  config = function()
+    require("mason").setup()
+    require("mason-lspconfig").setup({
+      ensure_installed = {
+        "lua_ls",
+        "html",
+        "cssls",
+        "tsserver",
+      }
+    })
 
-		local on_attach = function(_, bufnr)
-			vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
-			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {buffer = bufnr})
-		end
+		 local on_attach = function(_, bufnr)
+      local bufopts = { noremap = true, silent = true, buffer = bufnr }
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    end
 
 		require("neodev").setup()
 		require("lspconfig").lua_ls.setup({
@@ -26,5 +36,21 @@ return {
 				}
 			}
 		})
-	end
+
+	-- Configuración del servidor HTML (html)
+    require("lspconfig").html.setup({
+      on_attach = on_attach,
+    })
+
+    -- Configuración del servidor CSS (cssls)
+    require("lspconfig").cssls.setup({
+      on_attach = on_attach,
+    })
+
+    -- Configuración del servidor TypeScript/JavaScript (tsserver)
+    require("lspconfig").tsserver.setup({
+      on_attach = on_attach,
+    })
+  end
 }
+			

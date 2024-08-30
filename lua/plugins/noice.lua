@@ -78,24 +78,7 @@ return {
       },
     },
     config = function(_, opts)
-      require("noice").setup(opts) 
-      
-			-- Keybindings para Noice
-      vim.keymap.set("n", "<leader>c", function()
-        require("noice").cmd("show")
-      end, { desc = "Show Noice Message History" })
-      
-      vim.keymap.set("n", "<leader>nl", function()
-        require("noice").cmd("last")
-      end, { desc = "Show Last Noice Message" })
-      
-      vim.keymap.set("n", "<leader>nh", function()
-        require("noice").cmd("history")
-      end, { desc = "Show Noice History" })
-      
-      vim.keymap.set("n", "<leader>nd", function()
-        require("noice").cmd("dismiss")
-      end, { desc = "Dismiss All Noice Messages" })
-    end,
+      require("noice").setup(opts)
+		end,
   }
 }

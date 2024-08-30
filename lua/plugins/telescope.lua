@@ -1,110 +1,104 @@
+-- Archivo: .config/nvim/lua/plugins/telescope.lua
 return {
-	"nvim-telescope/telescope.nvim",
-	event = 'VeryLazy',
-	dependencies = {
-		'nvim-lua/plenary.nvim',
-		'nvim-telescope/telescope-file-browser.nvim',
-		{
-			'nvim-telescope/telescope-fzf-native.nvim',
-			build = 'make'
-		}
-	},
-	opts = {
-		extensions = {
-			fzf = {
-				fuzzy = true,
-				override_generic_sorter = true,
-				override_file_sorter = true,
-				case_mode = "smart_case",
-			},
-		}
-	},
-	config = function(_, opts)
-		require('telescope').setup(opts)
-		require('telescope').load_extension('fzf')
-	end,
-  keys = {
+  "nvim-telescope/telescope.nvim",
+  event = "VeryLazy",  -- Lazy load when VimEnter event is triggered
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-telescope/telescope-file-browser.nvim",
     {
-      "<leader>pp",
-      function()
-        require('telescope.builtin').git_files({ show_untracked = true })
-      end,
-      desc = "Telescope Git Files",
-    },
-    {
-      "<leader>pe",
-      function()
-        require("telescope.builtin").buffers()
-      end,
-      desc = "Telescope buffers",
-    },
-    {
-      "<leader>gs",
-      function()
-        require("telescope.builtin").git_status()
-      end,
-      desc = "Telescope Git status",
-    },
-    {
-      "<leader>gc",
-      function()
-        require("telescope.builtin").git_bcommits()
-      end,
-      desc = "Telescope Git status",
-    },
-    {
-      "<leader>gb",
-      function()
-        require("telescope.builtin").git_branches()
-      end,
-      desc = "Telescope Git branches",
-    },
-    {
-      "<leader>rp",
-      function()
-        require("telescope.builtin").find_files({
-          prompt_title = "Plugins",
-          cwd = vim.fn.stdpath("config") .. "/lua/plugins",
-          attach_mappings = function(_, map)
-            local actions = require("telescope.actions")
-            local action_state = require("telescope.actions.state")
-            map("i", "<c-y>", function(prompt_bufnr)
-              local new_plugin = action_state.get_current_line()
-              actions.close(prompt_bufnr)
-              vim.cmd(string.format("edit ~/.config/nvim/lua/plugins/%s.lua", new_plugin))
-            end)
-            return true
-          end
-        })
-      end
-    },
-    {
-      "<leader>pf",
-      function()
-        require('telescope.builtin').find_files()
-      end,
-      desc = "Telescope Find Files",
-    },
-    {
-      "<leader>ph",
-      function()
-        require("telescope.builtin").help_tags()
-      end,
-      desc = "Telescope Help"
-    },
-    {
-      "<leader>bb",
-      function()
-        require("telescope").extensions.file_browser.file_browser({ path = "%:h:p", select_buffer = true })
-      end,
-      desc = "Telescope file browser"
-    },
-		{
-      "<leader>pc",
-      function()
-        require("telescope.builtin").commands()
-      end,
-      desc = "Telescope Commands"
-    },
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+    }
   },
+  config = function()
+    local telescope = require("telescope")
+    local actions = require("telescope.actions")
+
+    telescope.setup({
+      defaults = {
+        prompt_prefix = "> ",
+        selection_caret = " ",
+        path_display = { "smart" },
+        mappings = {
+          i = {
+            ["<C-n>"] = actions.cycle_history_next,
+            ["<C-p>"] = actions.cycle_history_prev,
+            ["<C-c>"] = actions.close,
+            ["<Down>"] = actions.move_selection_next,
+            ["<Up>"] = actions.move_selection_previous,
+            ["<CR>"] = actions.select_default,
+            ["<C-x>"] = actions.select_horizontal,
+            ["<C-v>"] = actions.select_vertical,
+            ["<C-t>"] = actions.select_tab,
+          },
+        },
+      },
+      pickers = {
+        find_files = {
+          theme = "dropdown",
+        },
+        live_grep = {
+          theme = "dropdown",
+        },
+				 buffers = {
+          theme = "dropdown",
+          previewer = false,
+        },
+        help_tags = {
+          theme = "dropdown",
+        },
+        git_files = {
+          theme = "dropdown",
+        },
+        git_status = {
+          theme = "dropdown",
+        },
+        git_branches = {
+          theme = "dropdown",
+        },
+        git_commits = {
+          theme = "dropdown",
+        },
+      },
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+           case_mode = "smart_case",
+        },
+      },
+    })
+
+    telescope.load_extension("fzf")
+    telescope.load_extension("file_browser")
+
+    -- Keybindings for Telescope commands
+    local map = vim.api.nvim_set_keymap
+    local opts = { noremap = true, silent = true }
+
+    -- Telescope key mappings
+    map("n", "<leader>fc", "<cmd>Telescope colorscheme<cr>", opts)
+    map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
+    map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
+    map("n", "<leader>fo", "<cmd>Telescope oldfiles<cr>", opts)
+
+    -- Search-related mappings
+    map("n", "<leader>sh", "<cmd>Telescope help_tags<cr>", opts)
+    map("n", "<leader>sm", "<cmd>Telescope man_pages<cr>", opts)
+    map("n", "<leader>sk", "<cmd>Telescope keymaps<cr>", opts)
+    map("n", "<leader>sc", "<cmd>Telescope commands<cr>", opts)
+
+    -- Git-related mappings
+    map("n", "<leader>gf", "<cmd>Telescope git_files<cr>", opts)
+    map("n", "<leader>gs", "<cmd>Telescope git_status<cr>", opts)
+    map("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts)
+    map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", opts)
+
+    -- Buffers mapping
+    map("n", "<leader>bf", "<cmd>Telescope buffers<cr>", opts)
+
+    -- Command prompt binding (command line input)
+    map("n", "<leader>sl", "<cmd>Telescope command_history<cr>", opts)
+  end,
 }

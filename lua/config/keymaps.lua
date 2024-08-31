@@ -1,20 +1,43 @@
+local function map(mode, lhs, rhs, opts)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
 -- Mapeos para navegar entre paneles
-vim.keymap.set("n", "<leader>h", "<C-w>h", { noremap = true, silent = true })  -- Mover a la ventana izquierda
-vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })  -- Mover a la ventana inferior
-vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })  -- Mover a la ventana superior
-vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })  -- Mover a la ventana derecha
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
 
 -- Mapeos para cortar, copiar y pegar
-vim.keymap.set("n", "<leader>y", '"+y', { noremap = true, silent = true }) -- Copiar al portapapeles del sistema
-vim.keymap.set("n", "<leader>p", '"+p', { noremap = true, silent = true }) -- Pegar desde el portapapeles del sistema
-vim.keymap.set("n", "<leader>d", '"_d', { noremap = true, silent = true }) -- Cortar sin guardar en el registro
+map("n", "<leader>y", '"+y')
+map("v", "<leader>y", '"+y')
+map("n", "<leader>p", '"+p')
+map("v", "<leader>p", '"+p')
+map("n", "<leader>d", '"_d')
+map("v", "<leader>d", '"_d')
 
 -- Guardar el archivo
-vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
+map("n", "<leader>w", ":w<CR>")
 
 -- Dividir ventanas
-vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true }) -- Dividir ventana verticalmente
-vim.keymap.set("n", "<leader>s", ":split<CR>", { noremap = true, silent = true })  -- Dividir ventana horizontalmente
+map("n", "<leader>v", ":vsplit<CR>")
+map("n", "<leader>s", ":split<CR>")
 
 -- Reemplazar la palabra bajo el cursor
-vim.keymap.set("n", "<leader>r", ":%s/<C-r><C-w>//g<Left><Left>", { noremap = true, silent = false })
+map("n", "<leader>r", ":%s/<C-r><C-w>//g<Left><Left>", { silent = false })
+
+-- Configuración específica de plugins
+local M = {}
+
+M.setup = function()
+  -- Neo-tree
+  map("n", "<leader>e", ":Neotree filesystem reveal left<CR>")
+  map("n", "<leader>bf", ":Neotree buffers reveal float<CR>")
+  map("n", "<leader>q", ":Neotree close<CR>")
+end
+
+return M

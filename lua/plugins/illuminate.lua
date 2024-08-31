@@ -11,6 +11,7 @@ return {
         'packer',
         'dashboard',
       },
+       under_cursor = false,  -- No resaltar la palabra bajo el cursor
     })
 
     -- Mapeos para moverse entre coincidencias iluminadas

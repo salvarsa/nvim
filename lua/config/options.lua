@@ -3,8 +3,8 @@ vim.g.mapleader = " "  -- Establece la tecla líder a espacio
 
 -- Opciones de visualización
 vim.opt.number = true  -- Muestra el número de línea
-vim.opt.relativenumber = true  -- Muestra números de línea relativos para facilitar la navegación
-vim.opt.cursorline = true  -- Resalta la línea actual donde está el cursor
+--vim.opt.relativenumber = true  -- Muestra números de línea relativos para facilitar la navegación
+--vim.opt.cursorline = true  -- Resalta la línea actual donde está el cursor
 vim.opt.termguicolors = true  -- Habilita colores de terminal 24-bit
 vim.opt.signcolumn = "yes"  -- Muestra siempre la columna de signos (usada por lsp, git, etc.)
 vim.opt.wrap = false  -- No envuelve las líneas largas

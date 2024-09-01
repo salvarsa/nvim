@@ -81,6 +81,8 @@ return {
       dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
       dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
+      dashboard.button("m", "  Open current file", ":e %<CR>"),  -- Nuevo botón para abrir el archivo actual
+      dashboard.button("g", "  Chat with AI", ":Gen<CR>"),  -- Nuevo botón para interactuar con gen.nvim
      -- dashboard.button("m", "  BookMarks", ":Telescope marks <CR>"),
       dashboard.button("e", "  Extensions", ":e ~/.config/nvim/lua/VisualStudioNeovim/Core/plugins.lua<CR>"),
       dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
@@ -94,5 +96,4 @@ return {
     -- Ajustes adicionales
     vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
   end,
-}
- 
+} 

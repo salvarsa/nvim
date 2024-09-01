@@ -34,31 +34,16 @@ return {
         },
       },
       pickers = {
-        find_files = {
-          theme = "dropdown",
-        },
-        live_grep = {
-          theme = "dropdown",
-        },
+        find_files = {},
+        live_grep = {},
 				 buffers = {
-          theme = "dropdown",
           previewer = false,
         },
-        help_tags = {
-          theme = "dropdown",
-        },
-        git_files = {
-          theme = "dropdown",
-        },
-        git_status = {
-          theme = "dropdown",
-        },
-        git_branches = {
-          theme = "dropdown",
-        },
-        git_commits = {
-          theme = "dropdown",
-        },
+        help_tags = {},
+        git_files = {},
+        git_status = {},
+        git_branches = {},
+        git_commits = {},
       },
       extensions = {
         fzf = {

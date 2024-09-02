@@ -1,4 +1,3 @@
--- Archivo: .config/nvim/lua/plugins/telescope.lua
 return {
   "nvim-telescope/telescope.nvim",
   event = "VeryLazy",  -- Lazy load when VimEnter event is triggered

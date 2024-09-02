@@ -7,7 +7,7 @@ return {
 	event = "VeryLazy",
 	main = "nvim-treesitter.configs",
 	opts = {
-		ensure_instaled = {
+		ensure_installed = {
 			"lua",
 			"luadoc",
 			"html",

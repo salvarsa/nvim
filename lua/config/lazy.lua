@@ -12,13 +12,28 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     os.exit(1)
   end
 end
+
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup {
+require("lazy").setup({
   spec = {
     { import = "plugins" },
-	},
-	default = {
-			lazy = true
-		},
-}
+  },
+  default = {
+    lazy = true,
+  },
+  install = {
+    -- Desactiva instalación automática para evitar retrasos en el arranque
+    missing = true,
+    colorscheme = { "habamax" },
+  },
+  checker = {
+    -- Verifica actualizaciones de plugins automáticamente
+    enabled = true,
+    notify = false,
+  },
+  change_detection = {
+    enabled = true,
+    notify = false,
+  },
+})

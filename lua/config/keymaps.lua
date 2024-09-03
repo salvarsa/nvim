@@ -1,3 +1,4 @@
+-- Archivo: ~/.config/nvim/lua/config/keymaps.lua
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
@@ -29,15 +30,3 @@ map("n", "<leader>s", ":split<CR>")
 
 -- Reemplazar la palabra bajo el cursor
 map("n", "<leader>r", ":%s/<C-r><C-w>//g<Left><Left>", { silent = false })
-
--- Configuración específica de plugins
-local M = {}
-
-M.setup = function()
-  -- Neo-tree
-  map("n", "<leader>e", ":Neotree filesystem reveal left<CR>")
-  map("n", "<leader>bf", ":Neotree buffers reveal float<CR>")
-  map("n", "<leader>q", ":Neotree close<CR>")
-end
-
-return M
